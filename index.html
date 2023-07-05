@@ -27,20 +27,35 @@
             a:hover {
                 font-size: 3.05vw;
             }
+            .hidden {
+                display: none;
+            }
+            p {
+                color: #fff;
+                text-decoration: none;
+                font-size: 3vw;
+            }
         </style>
     </head>
     <body>
         <div>
             <a id="link">If you're not being redirected automatically, press here</a>
+            <p id="notice"></p>
         </div>
 
         <script>
             const params = new URLSearchParams(window.location.search);
             const raw = params.get('raw');
+            if (!raw) {
+                document.getElementById("link").classList.add("hidden");
+                document.getElementById("notice").innerText = `Usage:\n${window.location.host+window.location.pathname}?raw=TARGET_URI`
+
+            } else {
             document.getElementById("link").href = raw;
             window.location.href = raw;
             setInterval(()=>{window.location.href = raw;}, 2000);
             setTimeout(window.close, 7000);
+            };
         </script>
     </body>
 </html>
