@@ -1,1 +1,46 @@
-<h1>Hello World 😺</h1>
+
+
+
+<html>
+    <head>
+        <style>
+            body {
+                background-color: #120a12;
+                font-family: Arial;
+            }
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                min-height: 100vh;
+            }
+    
+            a:link,
+            a:visited,
+            a:active {
+                color: #fff;
+                border-bottom: 1px dashed #fff;
+                text-decoration: none;
+                font-size: 3vw;
+            }
+            a:hover {
+                font-size: 3.05vw;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <a id="link">If you're not being redirected automatically, press here</a>
+        </div>
+
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const raw = params.get('raw');
+            document.getElementById("link").href = raw;
+            window.location.href = raw;
+            setInterval(()=>{window.location.href = raw;}, 2000);
+            setTimeout(window.close, 7000);
+        </script>
+    </body>
+</html>
